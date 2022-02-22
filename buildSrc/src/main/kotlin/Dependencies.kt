@@ -58,6 +58,7 @@ object Lib {
     const val COMPOSE_NAVIGATION =
       "androidx.navigation:navigation-compose:${COMPOSE_NAVIGATION_VERSION}"
     const val MATERIAL_DESIGN = "com.google.android.material:material:${MATERIAL_DESIGN_VERSION}"
+    const val MATERIAL_THREE = "androidx.compose.material3:material3:1.0.0-alpha05"
     const val ACCOMPANIST_INSETS =
       "com.google.accompanist:accompanist-insets:${ACCOMPANIST_VERSION}"
     const val ACCOMPANIST_PAGER = "com.google.accompanist:accompanist-pager:${ACCOMPANIST_VERSION}"
