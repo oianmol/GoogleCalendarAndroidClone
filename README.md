@@ -12,12 +12,6 @@ The purpose of this app to showcase:
   Activity, Compose Views, View Models and Helper Classes
 - Performing background task with Kotlin Coroutines
 
-## Screenshots
-
-| Screenshots            | In Progress                        |
-|----------------	|------------------------------	|
-| <img src="art/art1_light.png" alt="drawing" style="width:300px;"/> | <img src="art/art1_dark.png" alt="drawing" style="width:300px;"/> |
-
 ### Screens
 Onboarding Screen Dark            |  Onboarding Screen Light
 :-------------------------:|:-------------------------:
