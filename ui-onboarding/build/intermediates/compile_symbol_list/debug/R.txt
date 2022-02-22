@@ -2435,6 +2435,7 @@ int drawable notification_template_icon_bg 0x0
 int drawable notification_template_icon_low_bg 0x0
 int drawable notification_tile_bg 0x0
 int drawable notify_panel_notification_icon_bg 0x0
+int drawable onb2 0x0
 int drawable test_custom_background 0x0
 int drawable tooltip_frame_dark 0x0
 int drawable tooltip_frame_light 0x0
@@ -3027,11 +3028,13 @@ int string default_popup_window_title 0x0
 int string direct_messages 0x0
 int string dms 0x0
 int string dropdown_menu 0x0
+int string easy_to_scan 0x0
 int string error_icon_content_description 0x0
 int string exposed_dropdown_menu_content_description 0x0
 int string fab_transformation_scrim_behavior 0x0
 int string fab_transformation_sheet_behavior 0x0
 int string google_calendar 0x0
+int string got_it 0x0
 int string head_workspaces 0x0
 int string help 0x0
 int string hide_bottom_view_on_scroll_behavior 0x0
@@ -3114,6 +3117,7 @@ int string pause_notifications 0x0
 int string preferences 0x0
 int string recent_searches 0x0
 int string saved_items 0x0
+int string schedule_view_puts 0x0
 int string search 0x0
 int string search_menu_title 0x0
 int string selected 0x0

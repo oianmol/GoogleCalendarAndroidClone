@@ -720,6 +720,9 @@
     <color name="tooltip_background_light">#e6ffffff</color>
     <color name="transparent_black_04">#0a000000</color>
     <color name="transparent_black_20">#33000000</color>
+    <string name="easy_to_scan">Easy to scan and lovely to look at</string>
     <string name="google_calendar">Google Calendar</string>
+    <string name="got_it">Got it</string>
     <string name="make_most_everyday">Make the most of every day.</string>
+    <string name="schedule_view_puts">Schedule View puts images and maps on your calendar.</string>
 </resources>

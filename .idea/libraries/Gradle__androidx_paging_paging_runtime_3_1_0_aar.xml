@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.paging:paging-runtime:3.1.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/28690e40efb87bff69f85f8ef8eb169f/transformed/paging-runtime-3.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/28690e40efb87bff69f85f8ef8eb169f/transformed/paging-runtime-3.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/28690e40efb87bff69f85f8ef8eb169f/transformed/paging-runtime-3.1.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/234eeadf9c89578ecde746f4cdb4661c/transformed/paging-runtime-3.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/234eeadf9c89578ecde746f4cdb4661c/transformed/paging-runtime-3.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/234eeadf9c89578ecde746f4cdb4661c/transformed/paging-runtime-3.1.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

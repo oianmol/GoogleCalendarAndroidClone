@@ -16,6 +16,7 @@ The purpose of this app to showcase:
 Onboarding Screen Dark            |  Onboarding Screen Light
 :-------------------------:|:-------------------------:
 <img src="art/art1_dark.png" width=240 />  |  <img src="art/art1_light.png" width=240 />
+<img src="art/art2_dark.png" width=240 />  |  <img src="art/art2_light.png" width=240 />
 
 ## 🏗️️ Built with ❤️ using Jetpack Compose 😁
 

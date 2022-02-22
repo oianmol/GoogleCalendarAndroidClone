@@ -4,14 +4,17 @@ import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.statusBarsPadding
+import com.google.accompanist.pager.*
 import dev.baseio.googlecalendar.commonui.theme.*
 import dev.baseio.googlecalendar.navigator.ComposeNavigator
 import dev.baseio.googlecalendar.uionboarding.R
@@ -33,18 +36,9 @@ fun GettingStartedUI(composeNavigator: ComposeNavigator) {
           modifier = Modifier
             .padding(28.dp)
         ) {
-          Column(
-            verticalArrangement = Arrangement.SpaceAround,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-              .fillMaxHeight()
-              .fillMaxWidth()
-          ) {
-            Spacer(Modifier.padding(8.dp))
-            CenterImage()
-            Spacer(Modifier.padding(8.dp))
-            GoogleCalendarOnboardingText()
-            Spacer(Modifier.padding(8.dp))
+          Column {
+            OnboardingPager()
+
           }
         }
       }
@@ -52,8 +46,95 @@ fun GettingStartedUI(composeNavigator: ComposeNavigator) {
   }
 }
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun GoogleCalendarOnboardingText() {
+private fun OnboardingPager() {
+  Box(Modifier.fillMaxSize()) {
+    val pagerState = rememberPagerState()
+    HorizontalPager(count = 2, state = pagerState) { pagerScope ->
+      when (pagerScope) {
+        0 -> {
+          OnbFirstPage()
+        }
+        1 -> {
+          OnbSecondPage()
+        }
+      }
+    }
+    if (pagerState.currentPage == 1) {
+      GotItButton()
+    } else {
+      PagerIndicators(pagerState)
+    }
+  }
+}
+
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+private fun BoxScope.PagerIndicators(pagerState: PagerState) {
+  HorizontalPagerIndicator(
+    pagerState = pagerState,
+    modifier = Modifier.Companion
+      .align(Alignment.BottomCenter)
+      .padding(16.dp),
+  )
+}
+
+@Composable
+private fun BoxScope.GotItButton() {
+  OutlinedButton(
+    onClick = {
+
+    },
+    modifier = Modifier.Companion
+      .align(Alignment.BottomCenter)
+      .padding(16.dp),
+    shape = RoundedCornerShape(50), // = 50% percent
+    colors = ButtonDefaults.buttonColors(backgroundColor = GoogleCalendarColorProvider.colors.buttonColor)
+  ) {
+    Text(
+      stringResource(id = R.string.got_it),
+      style = GoogleCalendarTypography.subtitle1.copy(GoogleCalendarColorProvider.colors.buttonTextColor)
+    )
+  }
+}
+
+@Composable
+private fun OnbSecondPage() {
+  Column(
+    verticalArrangement = Arrangement.SpaceAround,
+    horizontalAlignment = Alignment.CenterHorizontally,
+    modifier = Modifier
+      .fillMaxHeight()
+      .fillMaxWidth()
+  ) {
+    Spacer(Modifier.padding(8.dp))
+    ImageDrawable(R.drawable.onb2)
+    Spacer(Modifier.padding(8.dp))
+    GoogleCalendarOnboardingText(R.string.easy_to_scan, R.string.schedule_view_puts)
+    Spacer(Modifier.padding(8.dp))
+  }
+}
+
+@Composable
+private fun OnbFirstPage() {
+  Column(
+    verticalArrangement = Arrangement.SpaceAround,
+    horizontalAlignment = Alignment.CenterHorizontally,
+    modifier = Modifier
+      .fillMaxHeight()
+      .fillMaxWidth()
+  ) {
+    Spacer(Modifier.padding(8.dp))
+    ImageDrawable(R.drawable.gettingstarted)
+    Spacer(Modifier.padding(8.dp))
+    GoogleCalendarOnboardingText(R.string.google_calendar, R.string.make_most_everyday)
+    Spacer(Modifier.padding(8.dp))
+  }
+}
+
+@Composable
+private fun GoogleCalendarOnboardingText(primary: Int, secondary: Int) {
   var expanded by remember { mutableStateOf(false) }
   LaunchedEffect(Unit) {
     expanded = !expanded
@@ -66,13 +147,15 @@ private fun GoogleCalendarOnboardingText() {
   ) {
     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
       Text(
-        text = stringResource(id = R.string.google_calendar),
-        style = GoogleCalendarTypography.h5.copy(color = GoogleCalendarColorProvider.colors.textPrimary)
+        text = stringResource(id = primary),
+        style = GoogleCalendarTypography.h5.copy(color = GoogleCalendarColorProvider.colors.textPrimary),
+        textAlign = TextAlign.Center
       )
       Spacer(modifier = Modifier.height(24.dp))
       Text(
-        text = stringResource(id = R.string.make_most_everyday),
-        style = GoogleCalendarTypography.subtitle1.copy(color = GoogleCalendarColorProvider.colors.textSecondary)
+        text = stringResource(id = secondary),
+        style = GoogleCalendarTypography.subtitle1.copy(color = GoogleCalendarColorProvider.colors.textSecondary),
+        textAlign = TextAlign.Center
       )
     }
   }
@@ -80,9 +163,9 @@ private fun GoogleCalendarOnboardingText() {
 }
 
 @Composable
-private fun CenterImage() {
+private fun ImageDrawable(id: Int) {
   Image(
-    painter = painterResource(id = R.drawable.gettingstarted),
+    painter = painterResource(id = id),
     contentDescription = "Logo",
     Modifier
   )

@@ -721,5 +721,9 @@ color tooltip_background_light
 color transparent_black_04
 color transparent_black_20
 drawable gettingstarted
+drawable onb2
+string easy_to_scan
 string google_calendar
+string got_it
 string make_most_everyday
+string schedule_view_puts

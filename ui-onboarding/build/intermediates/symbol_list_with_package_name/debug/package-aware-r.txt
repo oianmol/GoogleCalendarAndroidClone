@@ -2436,6 +2436,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable onb2
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3028,11 +3029,13 @@ string default_popup_window_title
 string direct_messages
 string dms
 string dropdown_menu
+string easy_to_scan
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string google_calendar
+string got_it
 string head_workspaces
 string help
 string hide_bottom_view_on_scroll_behavior
@@ -3115,6 +3118,7 @@ string pause_notifications
 string preferences
 string recent_searches
 string saved_items
+string schedule_view_puts
 string search
 string search_menu_title
 string selected

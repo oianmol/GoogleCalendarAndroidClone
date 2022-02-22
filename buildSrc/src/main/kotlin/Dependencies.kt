@@ -38,7 +38,7 @@ object Lib {
     private const val COMPOSE_CONSTRAINT_LAYOUT_VERSION = "1.0.0"
     private const val COMPOSE_NAVIGATION_VERSION = "2.5.0-alpha01"
     private const val COMPOSE_COIL_VERSION = "1.4.0"
-    private const val ACCOMPANIST_VERSION = "0.24.1-alpha"
+    private const val ACCOMPANIST_VERSION = "0.23.0"
     private const val SPLASH_SCREEN_VERSION = "1.0.0-beta01"
 
     const val APP_COMPAT = "androidx.appcompat:appcompat:1.3.0-beta01"
@@ -60,6 +60,8 @@ object Lib {
     const val MATERIAL_DESIGN = "com.google.android.material:material:${MATERIAL_DESIGN_VERSION}"
     const val ACCOMPANIST_INSETS =
       "com.google.accompanist:accompanist-insets:${ACCOMPANIST_VERSION}"
+    const val ACCOMPANIST_PAGER = "com.google.accompanist:accompanist-pager:${ACCOMPANIST_VERSION}"
+    const val ACCOMPANIST_PAGER_INDICATORS = "com.google.accompanist:accompanist-pager-indicators:${ACCOMPANIST_VERSION}"
     const val SPLASH_SCREEN_API = "androidx.core:core-splashscreen:${SPLASH_SCREEN_VERSION}"
   }
 
