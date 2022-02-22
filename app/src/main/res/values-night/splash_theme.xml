@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.App.SplashScreenTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#1b1d21</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/googlecalendarlogo</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <!--        This will Set the Theme of the app after the Splash Screen has been ended-->
+        <item name="postSplashScreenTheme">@style/AppTheme.NoActionBar</item>
+    </style>
+
+</resources>

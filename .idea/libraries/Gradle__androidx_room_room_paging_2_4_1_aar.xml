@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.room:room-paging:2.4.1@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ccc254cdb449ff1e8663d2f700d6d47b/transformed/jetified-room-paging-2.4.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ccc254cdb449ff1e8663d2f700d6d47b/transformed/jetified-room-paging-2.4.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ccc254cdb449ff1e8663d2f700d6d47b/transformed/jetified-room-paging-2.4.1/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.room/room-paging/2.4.1/5b8f86fea035328fc9e8c660773037a3401ce25f/room-paging-2.4.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
