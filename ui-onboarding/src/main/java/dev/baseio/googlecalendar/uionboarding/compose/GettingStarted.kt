@@ -35,7 +35,7 @@ fun GettingStartedUI(composeNavigator: ComposeNavigator) {
       Box(modifier = Modifier.padding(innerPadding)) {
         GoogleCalendarSurface(
           modifier = Modifier
-            .padding(28.dp)
+            .padding(12.dp)
         ) {
           Column {
             OnboardingPager()
@@ -83,6 +83,7 @@ private fun PagerIndicators(pagerState: PagerState) {
   Box(Modifier.padding(16.dp)) {
     HorizontalPagerIndicator(
       pagerState = pagerState,
+      activeColor = GoogleCalendarColorProvider.colors.buttonColor
     )
   }
 }
