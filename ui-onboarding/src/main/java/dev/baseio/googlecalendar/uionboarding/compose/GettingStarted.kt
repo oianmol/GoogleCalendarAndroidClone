@@ -1,6 +1,7 @@
 package dev.baseio.googlecalendar.uionboarding.compose
 
 import androidx.compose.animation.*
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -61,34 +62,37 @@ private fun OnboardingPager() {
         }
       }
     }
-    if (pagerState.currentPage == 1) {
-      GotItButton()
-    } else {
-      PagerIndicators(pagerState)
+
+    Box(
+      modifier = Modifier.Companion
+        .align(Alignment.BottomCenter)
+        .padding(16.dp)
+    ) {
+      if (pagerState.currentPage == 1) {
+        GotItButton()
+      } else {
+        PagerIndicators(pagerState)
+      }
     }
   }
 }
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun BoxScope.PagerIndicators(pagerState: PagerState) {
-  HorizontalPagerIndicator(
-    pagerState = pagerState,
-    modifier = Modifier.Companion
-      .align(Alignment.BottomCenter)
-      .padding(16.dp),
-  )
+private fun PagerIndicators(pagerState: PagerState) {
+  Box(Modifier.padding(16.dp)) {
+    HorizontalPagerIndicator(
+      pagerState = pagerState,
+    )
+  }
 }
 
 @Composable
-private fun BoxScope.GotItButton() {
+private fun GotItButton() {
   OutlinedButton(
     onClick = {
 
     },
-    modifier = Modifier.Companion
-      .align(Alignment.BottomCenter)
-      .padding(16.dp),
     shape = RoundedCornerShape(50), // = 50% percent
     colors = ButtonDefaults.buttonColors(backgroundColor = GoogleCalendarColorProvider.colors.buttonColor)
   ) {
