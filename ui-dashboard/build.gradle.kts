@@ -62,7 +62,6 @@ dependencies {
     implementation(project(":navigator"))
     implementation(project(":commonui"))
 
-
     api(Lib.Android.COMPOSE_UI)
     api(Lib.Android.COIL_COMPOSE)
     api(Lib.Android.COMPOSE_MATERIAL)
