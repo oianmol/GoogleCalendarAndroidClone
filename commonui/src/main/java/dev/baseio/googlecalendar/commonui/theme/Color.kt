@@ -2,7 +2,6 @@ package dev.baseio.googlecalendar.commonui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val GoogleCalendarColor = Color(0xff411540)
 val DarkAppBarColor = Color(0xff1a1b1e)
 val DarkBackground = Color(0xff1b1d21)
 val FunctionalRed = Color(0xffd00036)
