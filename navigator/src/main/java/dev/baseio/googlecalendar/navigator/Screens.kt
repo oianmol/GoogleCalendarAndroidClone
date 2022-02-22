@@ -10,11 +10,14 @@ sealed class GoogleCalendarScreen(
 
   // onboarding
   object GettingStarted : GoogleCalendarScreen("gettingStarted")
+  object Dashboard : GoogleCalendarScreen("Dashboard")
 
 }
 
 sealed class GoogleCalendar(val name: String) {
-  object OnBoarding : GoogleCalendar("onboarding")
+  object OnBoarding : GoogleCalendar("onboardingFeat")
+  object Dashboard : GoogleCalendar("DashboardFeat")
+
 }
 
 private fun String.appendArguments(navArguments: List<NamedNavArgument>): String {

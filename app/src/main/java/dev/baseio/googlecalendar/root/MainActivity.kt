@@ -12,6 +12,7 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
 import dev.baseio.googlecalendar.navigator.ComposeNavigator
 import dev.baseio.googlecalendar.navigator.GoogleCalendar
+import dev.baseio.googlecalendar.uidashboard.nav.dashboardNavigation
 import dev.baseio.googlecalendar.uionboarding.nav.onboardingNavigation
 import javax.inject.Inject
 
@@ -39,9 +40,8 @@ class MainActivity : AppCompatActivity() {
           navController = navController,
           startDestination = GoogleCalendar.OnBoarding.name,
         ) {
-          onboardingNavigation(
-            composeNavigator = composeNavigator,
-          )
+          onboardingNavigation(composeNavigator)
+          dashboardNavigation(composeNavigator)
         }
       }
     }

@@ -99,6 +99,7 @@ kapt {
 
 dependencies {
   api(project(":ui-onboarding"))
+  api(project(":ui-dashboard"))
 
   implementation(project(":navigator"))
   implementation(project(":data"))
@@ -111,6 +112,7 @@ dependencies {
   implementation(Lib.Android.COMPOSE_NAVIGATION)
   implementation(Lib.Kotlin.KT_STD)
   implementation(Lib.Android.MATERIAL_DESIGN)
+  implementation(Lib.Android.MATERIAL_THREE)
   implementation(Lib.Android.CONSTRAINT_LAYOUT_COMPOSE)
   implementation(Lib.Android.ACCOMPANIST_INSETS)
   implementation(Lib.Android.SPLASH_SCREEN_API)

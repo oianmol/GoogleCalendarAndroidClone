@@ -16,41 +16,32 @@ import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val LightColorPalette = GoogleCalendarColorPalette(
-  brand = GoogleCalendarColor,
-  accent = GoogleCalendarColor,
   uiBackground = Color.White,
   textPrimary = Color(0xff212121),
   textSecondary = Color(0xff424242),
-  error = FunctionalRed,
-  statusBarColor = GoogleCalendarColor,
   isDark = false,
   buttonColor = ButtonColor,
   buttonTextColor = Color.White,
   darkBackground = DarkBackground,
-  appBarColor = GoogleCalendarColor,
   lineColor = LineColorLight,
   bottomNavSelectedColor = Color.Black,
   bottomNavUnSelectedColor = Color.LightGray,
-  appBarIconColor = Color.White,
-  appBarTextTitleColor = Color.White,
-  appBarTextSubTitleColor = Color.LightGray,
+  appBarIconColor = Color(0xff424242),
+  appBarTextTitleColor = Color(0xff212121),
+  appBarTextSubTitleColor =  Color(0xff424242),
   sendButtonDisabled = Color.LightGray,
-  sendButtonEnabled = Color.Black
+  sendButtonEnabled = Color.Black,
+  appBarColor = DashboardAppBarColor
 )
 
 private val DarkColorPalette = GoogleCalendarColorPalette(
-  brand = GoogleCalendarColor,
-  accent = GoogleCalendarColor,
   uiBackground = DarkBackground,
   textPrimary = Color.White,
   textSecondary = Color.White,
-  error = FunctionalRedDark,
-  statusBarColor = GoogleCalendarColor,
   isDark = true,
   buttonColor = ButtonColor,
   buttonTextColor = Color.Black,
   darkBackground = DarkBackground,
-  appBarColor = DarkAppBarColor,
   lineColor = LineColorDark,
   bottomNavSelectedColor = Color.White,
   bottomNavUnSelectedColor = Color.Gray,
@@ -58,7 +49,8 @@ private val DarkColorPalette = GoogleCalendarColorPalette(
   appBarTextTitleColor = Color.White,
   appBarTextSubTitleColor = Color.LightGray,
   sendButtonDisabled = Color.White.copy(alpha = 0.4f),
-  sendButtonEnabled = Color.White
+  sendButtonEnabled = Color.White,
+  appBarColor = DarkBackground
 )
 
 @Composable
@@ -95,18 +87,13 @@ object GoogleCalendarColorProvider {
  */
 @Stable
 class GoogleCalendarColorPalette(
-  brand: Color,
-  accent: Color,
   uiBackground: Color,
-  textPrimary: Color = brand,
+  textPrimary: Color,
   textSecondary: Color,
-  error: Color,
-  statusBarColor: Color,
   isDark: Boolean,
   buttonColor: Color,
   buttonTextColor: Color,
   darkBackground: Color,
-  appBarColor: Color,
   lineColor: Color,
   bottomNavSelectedColor: Color,
   bottomNavUnSelectedColor: Color,
@@ -114,21 +101,16 @@ class GoogleCalendarColorPalette(
   appBarTextTitleColor: Color,
   appBarTextSubTitleColor: Color,
   sendButtonDisabled:Color,
-  sendButtonEnabled:Color
+  sendButtonEnabled:Color,
+  appBarColor:Color
 ) {
-  var brand by mutableStateOf(brand)
-    private set
-  var accent by mutableStateOf(accent)
-    private set
   var uiBackground by mutableStateOf(uiBackground)
     private set
-  var statusBarColor by mutableStateOf(statusBarColor)
+  var appBarColor by mutableStateOf(appBarColor)
     private set
   var textPrimary by mutableStateOf(textPrimary)
     private set
   var textSecondary by mutableStateOf(textSecondary)
-    private set
-  var error by mutableStateOf(error)
     private set
   var isDark by mutableStateOf(isDark)
     private set
@@ -137,8 +119,6 @@ class GoogleCalendarColorPalette(
   var buttonTextColor by mutableStateOf(buttonTextColor)
     private set
   var darkBackground by mutableStateOf(darkBackground)
-    private set
-  var appBarColor by mutableStateOf(appBarColor)
     private set
   var lineColor by mutableStateOf(lineColor)
     private set
@@ -162,17 +142,13 @@ class GoogleCalendarColorPalette(
 
 
   fun update(other: GoogleCalendarColorPalette) {
-    brand = other.brand
     uiBackground = other.uiBackground
     textPrimary = other.textPrimary
     textSecondary = other.textSecondary
-    error = other.error
-    statusBarColor = other.statusBarColor
     isDark = other.isDark
     buttonColor = other.buttonColor
     buttonTextColor = other.buttonTextColor
     darkBackground = other.darkBackground
-    appBarColor = other.appBarColor
     lineColor = other.lineColor
     bottomNavSelectedColor = other.bottomNavSelectedColor
     bottomNavUnSelectedColor = other.bottomNavUnSelectedColor
@@ -181,6 +157,7 @@ class GoogleCalendarColorPalette(
     appBarTextSubTitleColor = other.appBarTextSubTitleColor
     sendButtonEnabled = other.sendButtonEnabled
     sendButtonDisabled = other.sendButtonDisabled
+    appBarColor = other.appBarColor
   }
 }
 

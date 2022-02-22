@@ -45,6 +45,7 @@ dependencies {
     api(Lib.Kotlin.KTX_CORE)
     /* Android Designing and layout */
     api(Lib.Android.MATERIAL_DESIGN)
+    api(Lib.Android.MATERIAL_THREE)
     api(Lib.Android.COMPOSE_UI)
     implementation(Lib.Android.CONSTRAINT_LAYOUT_COMPOSE)
     implementation(Lib.Android.ACCOMPANIST_SYSTEM_UI_CONTROLLER)
