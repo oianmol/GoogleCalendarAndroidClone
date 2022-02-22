@@ -19,7 +19,6 @@ private val LightColorPalette = GoogleCalendarColorPalette(
   uiBackground = Color.White,
   textPrimary = Color(0xff212121),
   textSecondary = Color(0xff424242),
-  error = FunctionalRed,
   isDark = false,
   buttonColor = ButtonColor,
   buttonTextColor = Color.White,
@@ -27,18 +26,18 @@ private val LightColorPalette = GoogleCalendarColorPalette(
   lineColor = LineColorLight,
   bottomNavSelectedColor = Color.Black,
   bottomNavUnSelectedColor = Color.LightGray,
-  appBarIconColor = Color.White,
-  appBarTextTitleColor = Color.White,
-  appBarTextSubTitleColor = Color.LightGray,
+  appBarIconColor = Color(0xff424242),
+  appBarTextTitleColor = Color(0xff212121),
+  appBarTextSubTitleColor =  Color(0xff424242),
   sendButtonDisabled = Color.LightGray,
-  sendButtonEnabled = Color.Black
+  sendButtonEnabled = Color.Black,
+  appBarColor = DashboardAppBarColor
 )
 
 private val DarkColorPalette = GoogleCalendarColorPalette(
   uiBackground = DarkBackground,
   textPrimary = Color.White,
   textSecondary = Color.White,
-  error = FunctionalRedDark,
   isDark = true,
   buttonColor = ButtonColor,
   buttonTextColor = Color.Black,
@@ -50,7 +49,8 @@ private val DarkColorPalette = GoogleCalendarColorPalette(
   appBarTextTitleColor = Color.White,
   appBarTextSubTitleColor = Color.LightGray,
   sendButtonDisabled = Color.White.copy(alpha = 0.4f),
-  sendButtonEnabled = Color.White
+  sendButtonEnabled = Color.White,
+  appBarColor = DarkBackground
 )
 
 @Composable
@@ -90,7 +90,6 @@ class GoogleCalendarColorPalette(
   uiBackground: Color,
   textPrimary: Color,
   textSecondary: Color,
-  error: Color,
   isDark: Boolean,
   buttonColor: Color,
   buttonTextColor: Color,
@@ -102,15 +101,16 @@ class GoogleCalendarColorPalette(
   appBarTextTitleColor: Color,
   appBarTextSubTitleColor: Color,
   sendButtonDisabled:Color,
-  sendButtonEnabled:Color
+  sendButtonEnabled:Color,
+  appBarColor:Color
 ) {
   var uiBackground by mutableStateOf(uiBackground)
+    private set
+  var appBarColor by mutableStateOf(appBarColor)
     private set
   var textPrimary by mutableStateOf(textPrimary)
     private set
   var textSecondary by mutableStateOf(textSecondary)
-    private set
-  var error by mutableStateOf(error)
     private set
   var isDark by mutableStateOf(isDark)
     private set
@@ -145,7 +145,6 @@ class GoogleCalendarColorPalette(
     uiBackground = other.uiBackground
     textPrimary = other.textPrimary
     textSecondary = other.textSecondary
-    error = other.error
     isDark = other.isDark
     buttonColor = other.buttonColor
     buttonTextColor = other.buttonTextColor
@@ -158,6 +157,7 @@ class GoogleCalendarColorPalette(
     appBarTextSubTitleColor = other.appBarTextSubTitleColor
     sendButtonEnabled = other.sendButtonEnabled
     sendButtonDisabled = other.sendButtonDisabled
+    appBarColor = other.appBarColor
   }
 }
 
