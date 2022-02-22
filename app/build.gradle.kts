@@ -99,6 +99,7 @@ kapt {
 
 dependencies {
   api(project(":ui-onboarding"))
+  api(project(":ui-dashboard"))
 
   implementation(project(":navigator"))
   implementation(project(":data"))

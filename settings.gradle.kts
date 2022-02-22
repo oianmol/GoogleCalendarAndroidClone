@@ -9,3 +9,4 @@ include(":commonui")
 include(":navigator")
 
 include(":ui-onboarding")
+include(":ui-dashboard")

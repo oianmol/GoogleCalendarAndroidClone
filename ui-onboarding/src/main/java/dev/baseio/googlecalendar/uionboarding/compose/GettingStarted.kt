@@ -1,7 +1,6 @@
 package dev.baseio.googlecalendar.uionboarding.compose
 
 import androidx.compose.animation.*
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -18,6 +17,7 @@ import com.google.accompanist.insets.statusBarsPadding
 import com.google.accompanist.pager.*
 import dev.baseio.googlecalendar.commonui.theme.*
 import dev.baseio.googlecalendar.navigator.ComposeNavigator
+import dev.baseio.googlecalendar.navigator.GoogleCalendar
 import dev.baseio.googlecalendar.uionboarding.R
 
 @Composable
@@ -38,7 +38,7 @@ fun GettingStartedUI(composeNavigator: ComposeNavigator) {
             .padding(12.dp)
         ) {
           Column {
-            OnboardingPager()
+            OnboardingPager(composeNavigator)
 
           }
         }
@@ -49,7 +49,7 @@ fun GettingStartedUI(composeNavigator: ComposeNavigator) {
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun OnboardingPager() {
+private fun OnboardingPager(composeNavigator: ComposeNavigator) {
   Box(Modifier.fillMaxSize()) {
     val pagerState = rememberPagerState()
     HorizontalPager(count = 2, state = pagerState) { pagerScope ->
@@ -69,7 +69,7 @@ private fun OnboardingPager() {
         .padding(16.dp)
     ) {
       if (pagerState.currentPage == 1) {
-        GotItButton()
+        GotItButton(composeNavigator)
       } else {
         PagerIndicators(pagerState)
       }
@@ -89,10 +89,10 @@ private fun PagerIndicators(pagerState: PagerState) {
 }
 
 @Composable
-private fun GotItButton() {
+private fun GotItButton(composeNavigator: ComposeNavigator) {
   OutlinedButton(
     onClick = {
-
+      composeNavigator.navigate(GoogleCalendar.Dashboard.name)
     },
     shape = RoundedCornerShape(50), // = 50% percent
     colors = ButtonDefaults.buttonColors(backgroundColor = GoogleCalendarColorProvider.colors.buttonColor)
