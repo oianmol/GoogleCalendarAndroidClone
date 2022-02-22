@@ -13,10 +13,21 @@ The purpose of this app to showcase:
 - Performing background task with Kotlin Coroutines
 
 ### Screens
-Onboarding Screen Dark            |  Onboarding Screen Light
+Onboarding Screen 1 Dark            |  Onboarding Screen 1 Light
 :-------------------------:|:-------------------------:
 <img src="art/art1_dark.png" width=240 />  |  <img src="art/art1_light.png" width=240 />
+
+Onboarding Screen 2 Dark            |  Onboarding Screen 2 Light
+:-------------------------:|:-------------------------:
 <img src="art/art2_dark.png" width=240 />  |  <img src="art/art2_light.png" width=240 />
+
+Dashboard Dark(WIP)            |  Dashboard Light(WIP)
+:-------------------------:|:-------------------------:
+<img src="art/art3_dark.png" width=240 />  |  <img src="art/art3_light.png" width=240 />
+
+SideNavigation Dark(WIP)            |  SideNavigation Light(WIP)
+:-------------------------:|:-------------------------:
+<img src="art/art4_dark.png" width=240 />  |  <img src="art/art4_light.png" width=240 />
 
 ## 🏗️️ Built with ❤️ using Jetpack Compose 😁
 
