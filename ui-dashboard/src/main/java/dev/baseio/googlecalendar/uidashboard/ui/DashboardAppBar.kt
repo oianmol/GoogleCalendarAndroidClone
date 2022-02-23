@@ -1,12 +1,15 @@
 package dev.baseio.googlecalendar.uidashboard.ui
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarColorProvider
 
 @Composable
@@ -18,7 +21,7 @@ fun DashboardAppBar(toggleDrawer: () -> Unit) {
       titleContentColor = GoogleCalendarColorProvider.colors.appBarTextTitleColor,
       actionIconContentColor = GoogleCalendarColorProvider.colors.appBarIconColor
     ), title = {
-      CalendarMonthPicker()
+      CalendarMonthPicker {}
     }, actions = {
       IconButton(onClick = { /*TODO*/ }) {
         Icon(Icons.Filled.Search, contentDescription = null)
@@ -44,6 +47,15 @@ fun DashboardAppBar(toggleDrawer: () -> Unit) {
 
 
 @Composable
-fun CalendarMonthPicker() {
-  Text("February")
+fun CalendarMonthPicker(onToggle: () -> Unit) {
+  Row(Modifier.clickable {
+    onToggle.invoke()
+  }, verticalAlignment = Alignment.CenterVertically) {
+    Text("February")
+    Icon(
+      Icons.Filled.ArrowDropDown,
+      contentDescription = null,
+      modifier = Modifier.padding(start = 4.dp)
+    )
+  }
 }

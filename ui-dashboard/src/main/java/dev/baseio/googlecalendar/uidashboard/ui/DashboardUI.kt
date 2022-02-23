@@ -14,6 +14,7 @@ import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarColorProvider
 import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarSurface
 import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarTheme
 import dev.baseio.googlecalendar.navigator.ComposeNavigator
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,13 +47,7 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
           .navigationBarsPadding(),
         topBar = {
           DashboardAppBar {
-            scope.launch {
-              if (drawerState.isClosed) {
-                drawerState.open()
-              } else {
-                drawerState.close()
-              }
-            }
+            switchDrawer(scope, drawerState)
           }
         },
       ) { innerPadding ->
@@ -65,6 +60,20 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
           }
         }
       }
+    }
+  }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+private fun switchDrawer(
+  scope: CoroutineScope,
+  drawerState: DrawerState
+) {
+  scope.launch {
+    if (drawerState.isClosed) {
+      drawerState.open()
+    } else {
+      drawerState.close()
     }
   }
 }
