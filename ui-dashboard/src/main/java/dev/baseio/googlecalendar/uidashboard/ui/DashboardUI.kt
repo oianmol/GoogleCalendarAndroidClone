@@ -55,7 +55,6 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
       swipeableState.animateTo(if (monthExpanded.value) 1 else 0)
     }
 
-
     NavigationDrawer(
       drawerContent = {
         DashboardDrawer()
@@ -90,7 +89,9 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
                   orientation = Orientation.Vertical
                 )
             ) {
+
               CalendarCards(Modifier)
+
               Box(
                 Modifier
                   .offset { IntOffset(0, swipeableState.offset.value.roundToInt()) }
