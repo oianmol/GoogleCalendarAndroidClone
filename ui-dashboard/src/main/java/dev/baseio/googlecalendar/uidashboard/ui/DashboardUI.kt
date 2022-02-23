@@ -55,6 +55,7 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
       swipeableState.animateTo(if (monthExpanded.value) 1 else 0)
     }
 
+
     NavigationDrawer(
       drawerContent = {
         DashboardDrawer()
