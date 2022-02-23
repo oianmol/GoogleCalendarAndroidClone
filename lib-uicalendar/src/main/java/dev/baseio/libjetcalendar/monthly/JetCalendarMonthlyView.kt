@@ -25,7 +25,7 @@ fun JetCalendarMonthlyView(
     modifier = Modifier
       .fillMaxWidth()
       .wrapContentHeight()
-      .padding(start = 8.dp, end = 8.dp),
+      .padding(start = 4.dp, end = 4.dp),
     verticalArrangement = Arrangement.SpaceAround,
   ) {
     jetMonth.monthWeeks.forEach { week ->
@@ -36,7 +36,6 @@ fun JetCalendarMonthlyView(
         selectedDates = selectedDates
       )
     }
-
   }
 }
 

@@ -53,7 +53,7 @@ fun JetCalendarWeekView(
         Text(
           text = date.date.dayOfMonth.toString(),
           textAlign = TextAlign.Center,
-          style = GoogleCalendarTypography.subtitle2
+          style = GoogleCalendarTypography.subtitle1
             .copy(color = if (date.isPartOfMonth) GoogleCalendarColorProvider.colors.appBarTextTitleColor else Color.Transparent)
         )
       }

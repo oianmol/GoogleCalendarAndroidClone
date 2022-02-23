@@ -1,5 +1,6 @@
 package dev.baseio.googlecalendar.commonui.theme
 
+import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
@@ -13,6 +14,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.ViewCompat
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val LightColorPalette = GoogleCalendarColorPalette(
@@ -59,11 +63,12 @@ fun GoogleCalendarTheme(
   content: @Composable () -> Unit
 ) {
   val colors = if (isDarkTheme) DarkColorPalette else LightColorPalette
-  val sysUiController = rememberSystemUiController()
+  val view = LocalView.current
 
   SideEffect {
-    sysUiController.setSystemBarsColor(color = colors.uiBackground)
-    sysUiController.setNavigationBarColor(color = colors.uiBackground)
+    (view.context as Activity).window.statusBarColor = colors.uiBackground.toArgb()
+    (view.context as Activity).window.navigationBarColor = colors.uiBackground.toArgb()
+    ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = !isDarkTheme
   }
 
   ProvideGoogleCalendarColors(colors) {

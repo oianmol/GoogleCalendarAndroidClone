@@ -1,7 +1,8 @@
 package dev.baseio.googlecalendar.uidashboard.ui
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarColorProvider
 import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarSurface
 import dev.baseio.libjetcalendar.data.JetDay
@@ -12,11 +13,11 @@ import java.time.DayOfWeek
 import java.time.LocalDate
 
 @Composable
-fun DashboardMonthView() {
+fun DashboardMonthView(modifier: Modifier) {
   GoogleCalendarSurface(
-    color = GoogleCalendarColorProvider.colors.appBarColor
+    color = GoogleCalendarColorProvider.colors.appBarColor, modifier = modifier
   ) {
-    Column {
+    Column(Modifier.fillMaxWidth()) {
       WeekNames(DayOfWeek.SUNDAY)
       JetCalendarMonthlyView(
         jetMonth = JetMonth.current(),
@@ -25,5 +26,4 @@ fun DashboardMonthView() {
       )
     }
   }
-
 }
