@@ -10,3 +10,4 @@ include(":navigator")
 
 include(":ui-onboarding")
 include(":ui-dashboard")
+include(":lib-uicalendar")

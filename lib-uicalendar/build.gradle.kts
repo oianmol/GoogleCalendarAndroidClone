@@ -2,7 +2,6 @@ plugins {
     id(BuildPlugins.ANDROID_LIBRARY_PLUGIN)
     id(BuildPlugins.KOTLIN_ANDROID_PLUGIN)
     id(BuildPlugins.KOTLIN_KAPT)
-    id(BuildPlugins.DAGGER_HILT)
     id(BuildPlugins.KOTLIN_PARCELABLE_PLUGIN)
     id("org.jlleitschuh.gradle.ktlint")
 }
@@ -56,16 +55,10 @@ kapt {
 }
 
 dependencies {
-    /*Kotlin*/
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
-    implementation(project(":data"))
-    implementation(project(":domain"))
     implementation(project(":common"))
-    implementation(project(":navigator"))
     implementation(project(":commonui"))
-
-    implementation(project(":lib-uicalendar"))
 
     api(Lib.Android.COMPOSE_UI)
     api(Lib.Android.COIL_COMPOSE)
@@ -82,14 +75,6 @@ dependencies {
     api(Lib.Kotlin.KTX_CORE)
 
     api(Lib.Android.ACCOMPANIST_INSETS)
-
-    /*DI*/
-    api(Lib.Di.hiltAndroid)
-    api(Lib.Di.hiltNavigationCompose)
-    api(Lib.Di.hiltViewModel)
-
-    kapt(Lib.Di.hiltCompiler)
-    kapt(Lib.Di.hiltAndroidCompiler)
 
     /* Logger */
     api(Lib.Logger.TIMBER)

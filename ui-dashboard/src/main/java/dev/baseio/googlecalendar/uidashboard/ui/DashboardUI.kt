@@ -46,23 +46,23 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
           .statusBarsPadding()
           .navigationBarsPadding(),
         topBar = {
-          DashboardAppBar {
+          DashboardAppBar({
             switchDrawer(scope, drawerState)
-          }
+          },{
+
+          })
         },
       ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
-          GoogleCalendarSurface(
-            modifier = Modifier
-              .padding(12.dp)
-          ) {
-
+          GoogleCalendarSurface() {
+            DashboardMonthView()
           }
         }
       }
     }
   }
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 private fun switchDrawer(

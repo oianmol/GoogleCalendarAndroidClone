@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarColorProvider
 
 @Composable
-fun DashboardAppBar(toggleDrawer: () -> Unit) {
+fun DashboardAppBar(toggleDrawer: () -> Unit,onToggleMonth: () -> Unit) {
   SmallTopAppBar(
     colors = TopAppBarDefaults.smallTopAppBarColors(
       containerColor = GoogleCalendarColorProvider.colors.appBarColor,
@@ -21,7 +21,9 @@ fun DashboardAppBar(toggleDrawer: () -> Unit) {
       titleContentColor = GoogleCalendarColorProvider.colors.appBarTextTitleColor,
       actionIconContentColor = GoogleCalendarColorProvider.colors.appBarIconColor
     ), title = {
-      CalendarMonthPicker {}
+      CalendarMonthPicker {
+        onToggleMonth.invoke()
+      }
     }, actions = {
       IconButton(onClick = { /*TODO*/ }) {
         Icon(Icons.Filled.Search, contentDescription = null)
@@ -47,9 +49,9 @@ fun DashboardAppBar(toggleDrawer: () -> Unit) {
 
 
 @Composable
-fun CalendarMonthPicker(onToggle: () -> Unit) {
+fun CalendarMonthPicker(onToggleMonth: () -> Unit) {
   Row(Modifier.clickable {
-    onToggle.invoke()
+    onToggleMonth.invoke()
   }, verticalAlignment = Alignment.CenterVertically) {
     Text("February")
     Icon(
