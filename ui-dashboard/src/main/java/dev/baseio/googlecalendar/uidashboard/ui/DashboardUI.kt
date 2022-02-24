@@ -3,6 +3,9 @@ package dev.baseio.googlecalendar.uidashboard.ui
 import android.app.Activity
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.*
@@ -32,6 +35,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
+
+enum class CalendarExpansion { Collapsed, Expanded }
+
 @OptIn(
   ExperimentalMaterial3Api::class, androidx.compose.material.ExperimentalMaterialApi::class,
   androidx.compose.animation.ExperimentalAnimationApi::class
@@ -51,11 +57,23 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
 
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+
+
     val monthExpanded = remember {
-      mutableStateOf(false)
+      mutableStateOf(CalendarExpansion.Collapsed)
     }
-    val calendarHeight = LocalConfiguration.current.screenHeightDp.times(0.3f).dp
-    val calendarHeightPx = with(LocalDensity.current) { calendarHeight.toPx() }
+
+    val change by animateFloatAsState(
+      if (monthExpanded.value == CalendarExpansion.Expanded) {
+        1f
+      } else {
+        0f
+      },
+      animationSpec = spring(
+        dampingRatio = Spring.DampingRatioLowBouncy,
+        stiffness = Spring.StiffnessMediumLow
+      )
+    )
 
     NavigationDrawer(
       drawerContent = {
@@ -75,7 +93,7 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
           DashboardAppBar({
             switchDrawer(scope, drawerState)
           }, {
-            monthExpanded.value = !monthExpanded.value
+            monthExpanded.value = monthExpanded.value.toggle()
           })
         },
       ) { innerPadding ->
@@ -85,19 +103,19 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
               modifier = Modifier
                 .fillMaxSize()
             ) {
-              AnimatedVisibility(monthExpanded.value) {
+              AnimatedVisibility(monthExpanded.value.isExpanded()) {
                 CalendarMonthView()
               }
-              if (monthExpanded.value) {
+              if (monthExpanded.value == CalendarExpansion.Expanded) {
                 Box {
                   CalendarCards()
                   Box(
                     Modifier
                       .fillMaxSize()
                       .animateDrag({
-                        monthExpanded.value = false
+                        monthExpanded.value = CalendarExpansion.Collapsed
                       }, {
-                        monthExpanded.value = true
+                        monthExpanded.value = CalendarExpansion.Expanded
                       })
                   )
                 }
@@ -110,6 +128,17 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
       }
     }
   }
+}
+
+private fun CalendarExpansion.isExpanded(): Boolean {
+  return this == CalendarExpansion.Expanded
+}
+
+private fun CalendarExpansion.toggle(): CalendarExpansion {
+  if (this == CalendarExpansion.Expanded) {
+    return CalendarExpansion.Collapsed
+  }
+  return CalendarExpansion.Expanded
 }
 
 @OptIn(ExperimentalMaterialApi::class)

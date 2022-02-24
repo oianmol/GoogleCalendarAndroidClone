@@ -12,7 +12,7 @@ fun Modifier.animateDrag(
   onCollapse: () -> Unit
 ): Modifier =
   composed {
-    val sensitivity = 200
+    val sensitivity = 100
     var swipeOffset by remember {
       mutableStateOf(0f)
     }
