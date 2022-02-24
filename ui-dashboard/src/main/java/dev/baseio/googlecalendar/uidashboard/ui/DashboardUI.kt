@@ -1,10 +1,14 @@
 package dev.baseio.googlecalendar.uidashboard.ui
 
 import android.app.Activity
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.FractionalThreshold
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.SwipeableState
 import androidx.compose.material.swipeable
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -18,15 +22,20 @@ import androidx.compose.ui.unit.dp
 import androidx.core.view.ViewCompat
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
+import dev.baseio.googlecalendar.commonui.reusable.animateDrag
 import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarColorProvider
 import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarSurface
 import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarTheme
+import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarTypography
 import dev.baseio.googlecalendar.navigator.ComposeNavigator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
-@OptIn(ExperimentalMaterial3Api::class, androidx.compose.material.ExperimentalMaterialApi::class)
+@OptIn(
+  ExperimentalMaterial3Api::class, androidx.compose.material.ExperimentalMaterialApi::class,
+  androidx.compose.animation.ExperimentalAnimationApi::class
+)
 @Composable
 fun DashboardUI(composeNavigator: ComposeNavigator) {
   GoogleCalendarTheme {
@@ -45,15 +54,8 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
     val monthExpanded = remember {
       mutableStateOf(false)
     }
-    val size = LocalConfiguration.current.screenHeightDp.times(0.3f).dp
-    val sizePx = with(LocalDensity.current) { size.toPx() }
-    val anchors = mapOf(-sizePx to 0, 0f to 1) // Maps anchor points (in px) to states
-    val swipeableState =
-      androidx.compose.material.rememberSwipeableState(if (monthExpanded.value) 1 else 0)
-
-    LaunchedEffect(monthExpanded.value) {
-      swipeableState.animateTo(if (monthExpanded.value) 1 else 0)
-    }
+    val calendarHeight = LocalConfiguration.current.screenHeightDp.times(0.3f).dp
+    val calendarHeightPx = with(LocalDensity.current) { calendarHeight.toPx() }
 
     NavigationDrawer(
       drawerContent = {
@@ -79,24 +81,28 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
       ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
           GoogleCalendarSurface {
-            Box(
+            Column(
               modifier = Modifier
                 .fillMaxSize()
-                .swipeable(
-                  state = swipeableState,
-                  anchors = anchors,
-                  thresholds = { _, _ -> FractionalThreshold(0f) },
-                  orientation = Orientation.Vertical
-                )
             ) {
-
-              CalendarCards(Modifier)
-
-              Box(
-                Modifier
-                  .offset { IntOffset(0, swipeableState.offset.value.roundToInt()) }
-              ) {
-                DashboardMonthView(Modifier.fillMaxWidth())
+              AnimatedVisibility(monthExpanded.value) {
+                CalendarMonthView()
+              }
+              if (monthExpanded.value) {
+                Box {
+                  CalendarCards()
+                  Box(
+                    Modifier
+                      .fillMaxSize()
+                      .animateDrag({
+                        monthExpanded.value = false
+                      }, {
+                        monthExpanded.value = true
+                      })
+                  )
+                }
+              } else {
+                CalendarCards()
               }
             }
           }
@@ -106,10 +112,18 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
   }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+private fun CalendarMonthView() {
+  DashboardMonthView(Modifier.fillMaxWidth())
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun CalendarCards(modifier: Modifier) {
-  LazyColumn(modifier = modifier) {
+private fun CalendarCards() {
+  LazyColumn(
+    modifier = Modifier
+  ) {
     items(5) {
       Card(
         modifier = Modifier
@@ -118,7 +132,10 @@ private fun CalendarCards(modifier: Modifier) {
           .padding(16.dp),
         containerColor = GoogleCalendarColorProvider.colors.buttonColor
       ) {
-        Text(text = "sdfdsfsdf")
+        Text(
+          text = "Event",
+          style = GoogleCalendarTypography.subtitle1.copy(GoogleCalendarColorProvider.colors.buttonTextColor)
+        )
       }
     }
   }
