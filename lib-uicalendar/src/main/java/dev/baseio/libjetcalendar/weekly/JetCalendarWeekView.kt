@@ -29,7 +29,7 @@ fun JetCalendarWeekView(
   modifier: Modifier,
   week: JetWeek,
   onDateSelected: (JetDay) -> Unit,
-  selectedDates: Set<JetDay>,
+  selectedDates: JetDay,
 ) {
   LazyRow(
     modifier = modifier
@@ -63,7 +63,7 @@ fun JetCalendarWeekView(
 
 @Composable
 private fun bgColor(
-  selectedDates: Set<JetDay>,
+  selectedDates: JetDay,
   date: JetDay
 ) =
-  if (selectedDates.contains(date)) GoogleCalendarColorProvider.colors.buttonColor else Color.Transparent
+  if (selectedDates.date.isEqual(date.date)) GoogleCalendarColorProvider.colors.buttonColor else Color.Transparent

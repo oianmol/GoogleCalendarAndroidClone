@@ -19,7 +19,7 @@ import java.time.DayOfWeek
 fun JetCalendarMonthlyView(
   jetMonth: JetMonth,
   onDateSelected: (JetDay) -> Unit,
-  selectedDates: Set<JetDay>,
+  selectedDate: JetDay,
 ) {
   Column(
     modifier = Modifier
@@ -33,7 +33,7 @@ fun JetCalendarMonthlyView(
         modifier = Modifier.fillMaxWidth(),
         week = week,
         onDateSelected = onDateSelected,
-        selectedDates = selectedDates
+        selectedDates = selectedDate
       )
     }
   }

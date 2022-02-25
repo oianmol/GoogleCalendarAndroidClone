@@ -4,7 +4,6 @@ import android.app.Activity
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -79,7 +78,7 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
                 .fillMaxSize()
             ) {
               AnimatedVisibility(monthExpanded.value.isExpanded()) {
-                CalendarMonthView()
+                DashboardMonthView(Modifier.fillMaxWidth())
               }
               Box {
                 CalendarEventsCards()
@@ -119,12 +118,6 @@ private fun CalendarExpansion.toggle(): CalendarExpansion {
     return CalendarExpansion.Collapsed
   }
   return CalendarExpansion.Expanded
-}
-
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-private fun CalendarMonthView() {
-  DashboardMonthView(Modifier.fillMaxWidth())
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
