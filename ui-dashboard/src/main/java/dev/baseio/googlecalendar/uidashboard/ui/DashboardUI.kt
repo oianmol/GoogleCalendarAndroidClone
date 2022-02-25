@@ -84,15 +84,10 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
               if (monthExpanded.value == CalendarExpansion.Expanded) {
                 Box {
                   CalendarCards()
-                  Box(
-                    Modifier
-                      .fillMaxSize()
-                      .animateDrag({
-                        monthExpanded.value = CalendarExpansion.Collapsed
-                      }, {
-                        monthExpanded.value = CalendarExpansion.Expanded
-                      })
-                  )
+                  DragWhenCalendarExpanded { expansion ->
+                    monthExpanded.value = expansion
+                  }
+
                 }
               } else {
                 CalendarCards()
@@ -103,6 +98,19 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
       }
     }
   }
+}
+
+@Composable
+fun DragWhenCalendarExpanded(expanded: (CalendarExpansion) -> Unit) {
+  Box(
+    Modifier
+      .fillMaxSize()
+      .animateDrag({
+        expanded(CalendarExpansion.Collapsed)
+      }, {
+        expanded(CalendarExpansion.Expanded)
+      })
+  )
 }
 
 private fun CalendarExpansion.isExpanded(): Boolean {
