@@ -81,16 +81,13 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
               AnimatedVisibility(monthExpanded.value.isExpanded()) {
                 CalendarMonthView()
               }
-              if (monthExpanded.value == CalendarExpansion.Expanded) {
-                Box {
-                  CalendarCards()
+              Box {
+                CalendarEventsCards()
+                if (monthExpanded.value == CalendarExpansion.Expanded){
                   DragWhenCalendarExpanded { expansion ->
                     monthExpanded.value = expansion
                   }
-
                 }
-              } else {
-                CalendarCards()
               }
             }
           }
@@ -132,7 +129,7 @@ private fun CalendarMonthView() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun CalendarCards() {
+private fun CalendarEventsCards() {
   LazyColumn(
     modifier = Modifier
   ) {
