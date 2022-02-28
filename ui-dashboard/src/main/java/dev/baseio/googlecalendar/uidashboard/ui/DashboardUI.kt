@@ -3,13 +3,11 @@ package dev.baseio.googlecalendar.uidashboard.ui
 import android.app.Activity
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
-import androidx.compose.ui.unit.dp
 import androidx.core.view.ViewCompat
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
@@ -17,8 +15,8 @@ import dev.baseio.googlecalendar.commonui.reusable.animateDrag
 import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarColorProvider
 import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarSurface
 import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarTheme
-import dev.baseio.googlecalendar.commonui.theme.GoogleCalendarTypography
 import dev.baseio.googlecalendar.navigator.ComposeNavigator
+import dev.baseio.googlecalendar.uidashboard.ui.events.CalendarEventsCards
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -82,7 +80,7 @@ fun DashboardUI(composeNavigator: ComposeNavigator) {
               }
               Box {
                 CalendarEventsCards()
-                if (monthExpanded.value == CalendarExpansion.Expanded){
+                if (monthExpanded.value == CalendarExpansion.Expanded) {
                   DragWhenCalendarExpanded { expansion ->
                     monthExpanded.value = expansion
                   }
@@ -121,30 +119,6 @@ private fun CalendarExpansion.toggle(): CalendarExpansion {
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun CalendarEventsCards() {
-  LazyColumn(
-    modifier = Modifier
-  ) {
-    items(5) {
-      Card(
-        modifier = Modifier
-          .height(250.dp)
-          .fillMaxWidth()
-          .padding(16.dp),
-        containerColor = GoogleCalendarColorProvider.colors.buttonColor
-      ) {
-        Text(
-          text = "Event",
-          style = GoogleCalendarTypography.subtitle1.copy(GoogleCalendarColorProvider.colors.buttonTextColor)
-        )
-      }
-    }
-  }
-}
-
-
-@OptIn(ExperimentalMaterial3Api::class)
 private fun switchDrawer(
   scope: CoroutineScope,
   drawerState: DrawerState
@@ -157,7 +131,5 @@ private fun switchDrawer(
     }
   }
 }
-
-
 
 
